@@ -16,9 +16,11 @@ export default function Home() {
 
   // Images pour le carrousel
   const images = [
-    { src: "/livre1.jpeg", alt: "Livre 1" },
-    { src: "/livre2.jpeg", alt: "Livre 2" },
-    { src: "/livre3.jpeg", alt: "Livre 3" },
+    { src: "https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg?auto=compress&cs=tinysrgb&w=600", alt: "Image Pexels" },
+    { src: "/assets/livre1.jpeg", alt: "Livre 1" },
+    { src: "/assets/livre2.jpeg", alt: "Livre 2" },
+    { src: "/assets/livre3.jpeg", alt: "Livre 3" },
+    { src: "/assets/livre6.jpeg", alt: "Livre 6" },
   ];
 
   // État pour gérer l'index de l'image affichée dans le carrousel

@@ -31,9 +31,12 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SessionWrapper>
           <Nav />
+          <div className="flex flex-col justify-between min-h-screen">
           <ToastContainer />
-          <main>{children}</main>
+          
+          <main className="flex-grow">{children}</main>
           <Footer />
+          </div>
         </SessionWrapper>
       </body>
     </html>

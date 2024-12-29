@@ -1,21 +1,21 @@
 import NextAuth from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 
-// Déclaration des types pour étendre les interfaces de NextAuth (facultatif si vos extensions sont simples)
+// Étendre les types NextAuth pour ajouter des propriétés personnalisées
 declare module "next-auth" {
   interface Session {
     user?: {
       name?: string;
       email?: string;
       image?: string;
-      // Ajoutez d'autres propriétés si nécessaire, comme `role` ou `id`
-      role?: string;
-      id?: string;
+      role?: string; // Rôle de l'utilisateur, ajouté pour une gestion des permissions
+      id?: string;   // ID unique pour l'utilisateur
     };
   }
 }
 
-// Gestionnaire NextAuth pour gérer les requêtes GET et POST
+// Gestionnaire NextAuth qui sera appelé pour traiter les requêtes GET et POST
 const handler = NextAuth(authOptions);
 
+// Exportation des méthodes GET et POST
 export { handler as GET, handler as POST };

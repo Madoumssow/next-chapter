@@ -1,6 +1,10 @@
+"use client";
+
 // components/BookSection.tsx
 import React, { useState } from "react";
 import BookCard from "./BookCard";
+import { useSession } from "next-auth/react";
+import { handleInteraction } from "@/app/db/handleInteraction";
 
 const booksData = [
   {
@@ -8,7 +12,7 @@ const booksData = [
     title: "Le cas David Zimmerman",
     author: "Lucas Harari",
     price: "35,00 €",
-    imageSrc: "/bookImages/b1.jpeg",
+    imageSrc: "/assets/bookImages/b1.jpeg",
     alt: "Le cas David Zimmerman",
     condition: "Neuf 22,90 €",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -18,18 +22,18 @@ const booksData = [
     title: "La Librairie des Chats noirs",
     author: "Piergiorgio Pulixi",
     price: "18,32 €",
-    imageSrc: "/bookImages/b2.jpeg",
+    imageSrc: "/assets/bookImages/b2.jpeg",
     alt: "La Librairie des Chats noirs",
     condition: "Occasion 18,32 €",
     description: "Un thriller captivant avec des twists imprévus.",
   },
   {
-    
+
     id: "3",
     title: "Les Météores",
     author: "Inconnu",
     price: "34,95 €",
-    imageSrc: "/bookImages/b3.jpeg",
+    imageSrc: "/assets/bookImages/b3.jpeg",
     alt: "Les Météores",
     condition: "Récit complet",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -39,7 +43,7 @@ const booksData = [
     title: "Nous",
     author: "Christelle Dabos",
     price: "19,90 €",
-    imageSrc: "/bookImages/b4.jpeg",
+    imageSrc: "/assets/bookImages/b4.jpeg",
     alt: "Nous",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -49,7 +53,7 @@ const booksData = [
     title: "Deux filles nues",
     author: "Luz",
     price: "24,90 €",
-    imageSrc: "/bookImages/b5.jpeg",
+    imageSrc: "/assets/bookImages/b5.jpeg",
     alt: "Deux filles nues",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -59,7 +63,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/b6.jpeg",
+    imageSrc: "/assets/bookImages/b6.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -69,7 +73,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/b7.jpeg",
+    imageSrc: "/assets/bookImages/b7.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -79,7 +83,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/b8.jpeg",
+    imageSrc: "/assets/bookImages/b8.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -89,7 +93,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/b9.jpeg",
+    imageSrc: "/assets/bookImages/b9.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -99,7 +103,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/n1.jpeg",
+    imageSrc: "/assets/bookImages/n1.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -109,7 +113,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/n2.jpeg",
+    imageSrc: "/assets/bookImages/n2.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -119,7 +123,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/n3.jpeg",
+    imageSrc: "/assets/bookImages/n3.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -129,7 +133,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/n4.jpeg",
+    imageSrc: "/assets/bookImages/n4.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -139,7 +143,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/n5.jpeg",
+    imageSrc: "/assets/bookImages/n5.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -149,7 +153,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/n6.jpeg",
+    imageSrc: "/assets/bookImages/n6.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -159,7 +163,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/n7.jpeg",
+    imageSrc: "/assets/bookImages/n7.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -169,7 +173,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/n8.jpeg",
+    imageSrc: "/assets/bookImages/n8.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -179,7 +183,7 @@ const booksData = [
     title: "Roman de Ronce et d'Épine",
     author: "Lucie Baratte",
     price: "18,50 €",
-    imageSrc: "/bookImages/n9.jpeg",
+    imageSrc: "/assets/bookImages/n9.jpeg",
     alt: "Roman de Ronce et d'Épine",
     condition: "Neuf",
     description: "Un thriller captivant avec des twists imprévus.",
@@ -187,23 +191,48 @@ const booksData = [
 
 ];
 
-const BookSection = () => {
-  const [books, setBooks] = useState(booksData); // État local pour les livres
-  const [likedBooks, setLikedBooks] = useState<string[]>([]); // Stocke les livres aimés
+const BookSection: React.FC = () => {
 
-  // Fonction pour gérer l'action "like"
-  const handleLike = (id: string) => {
-    setLikedBooks((prevLikedBooks) =>
-      prevLikedBooks.includes(id)
-        ? prevLikedBooks.filter((bookId) => bookId !== id) // Retire si déjà aimé
-        : [...prevLikedBooks, id] // Ajoute sinon
+  const [books, setBooks] = useState<typeof booksData>(booksData);
+  const [likedBooks, setLikedBooks] = useState<string[]>([]);
+  
+  const { data: session } = useSession();
+  const userId = session?.user?.id;
+
+  if (!userId) {
+    return (
+      <p className="text-center text-red-500">
+        Veuillez vous connecter pour accéder à cette section.
+      </p>
     );
-  };
+  }
 
-  // Fonction pour gérer l'action "supprimer"
-  const handleDelete = (id: string) => {
-    setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id)); // Supprime le livre de l'état
-  };
+  const handleLike = async (bookId: string): Promise<void> => { 
+    try { 
+        await handleInteraction(bookId, "like"); 
+        setLikedBooks((prevLikedBooks) => [...prevLikedBooks, bookId]); 
+      } catch (error) {
+        console.error("Erreur lors de l'ajout du like :", error); 
+      } 
+    };
+
+    const handleDislike = async (bookId: string): Promise<void> => {
+      try { 
+        await handleInteraction(bookId, "dislike"); 
+        setLikedBooks((prevLikedBooks) => prevLikedBooks.filter((id) => id !== bookId) ); 
+      } catch (error) { 
+        console.error("Erreur lors de l'ajout du dislike :", error); 
+      } 
+    };
+
+    const handleDelete = async (bookId: string): Promise<void> => { 
+      try { 
+        await handleInteraction(bookId, "delete"); 
+        setBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookId)); 
+      } catch (error) { 
+        console.error("Erreur lors de la suppression du livre :", error); 
+      } 
+    };
 
   return (
     <div className="p-4">
@@ -219,9 +248,10 @@ const BookSection = () => {
             alt={book.alt}
             condition={book.condition}
             description={book.description}
-            isLiked={likedBooks.includes(book.id)} // Vérifie si le livre est aimé
-            onLike={handleLike}
-            onDelete={handleDelete}
+            isLiked={likedBooks.includes(book.id)}
+            onLike={() => handleLike(book.id)}
+            onDislike={() => handleDislike(book.id)}
+            onDelete={() => handleDelete(book.id)}
           />
         ))}
       </div>
@@ -230,4 +260,3 @@ const BookSection = () => {
 };
 
 export default BookSection;
-

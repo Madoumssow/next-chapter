@@ -66,6 +66,7 @@ export default function Books() {
             onClick={() => {
               Cookies.remove("userInfo");
               signOut();
+              router.push('/login'); // Redirige après déconnexion
             }}
             className="mt-8 flex items-center gap-2 bg-red-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-600 transition-transform transform hover:scale-105"
           >
