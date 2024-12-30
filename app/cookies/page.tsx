@@ -26,7 +26,7 @@ async function fetchApi<T>(
       throw new Error(`Erreur : ${response.statusText}`);
     }
 
-    return await response.json();
+    return (await response.json()) as ApiResponse;
   } catch (error) {
     console.error(
       `Erreur lors de l'appel à ${endpoint} :`,
@@ -35,6 +35,19 @@ async function fetchApi<T>(
     throw error; // Relance l'erreur pour permettre un traitement personnalisé
   }
 }
+
+// Interface pour les pages
+interface PageConfig { createSessionCookie?: () => Promise<void>; }
+
+// Exemple de fonction vérifiant les champs 
+function checkFields<T>(obj: T): void { 
+  // Vérifiez les champs ici 
+  }
+
+  checkFields<PageConfig>({ createSessionCookie: async () => { 
+    // Votre implémentation ici 
+  }, });
+
 
 // Fonction pour créer un cookie de session
 export async function createSessionCookie(): Promise<void> {
