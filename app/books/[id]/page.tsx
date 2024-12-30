@@ -160,12 +160,15 @@ const BookDetail = () => {
 
       if (foundBook) {
         setBook(foundBook);
-        setLoading(false);
+        setError(null);
       } else {
         setError("Livre introuvable");
-        setLoading(false);
       }
+    }else {
+      setError("ID invalide");
     }
+    setLoading(false);
+
   }, [id]);
 
   if (loading) {
@@ -192,10 +195,13 @@ const BookDetail = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold">{book?.title}</h1>
-      <p className="text-gray-600">{book?.author}</p>
-      <Image src={book?.imageSrc || ""} alt={book?.title} width={300} height={400} />
-      <p className="mt-4">{book?.description}</p>
+      <h1 className="text-2xl font-bold">{book?.title || "Titre indisponible"}</h1>
+      <p className="text-gray-600">{book?.author || "Auteur inconnu"}</p>
+      <Image src={book?.imageSrc || "/assets/default-image.jpg"}
+            alt={book?.title || "Image indisponible"}
+            width={300} 
+            height={400} />
+      <p className="mt-4">{book?.description || "Description non disponible"}</p>
       {book?.price && <p className="mt-2 text-xl font-semibold">{book?.price}</p>}
     </div>
   );
