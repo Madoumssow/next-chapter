@@ -8,6 +8,16 @@ const nextConfig = {
         port: '3000',
         pathname: '/assets/**', // Permet de charger les images locales dans le dossier public
       },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        pathname: '/**', // Autorise les images provenant de GitHub
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        pathname: '/**', // Autorise les images provenant de Google
+      },
     ],
   },
   env: {

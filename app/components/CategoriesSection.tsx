@@ -11,9 +11,6 @@ interface CategoriesCardProps {
   alt: string;
   condition: string;
   description: string;
-  isLiked: boolean;
-  onLike: (id: string) => void;
-  onDelete: (id: string) => void;
 }
 
 interface CategoriesData {
@@ -31,9 +28,7 @@ const categoriesData: CategoriesData = {
       alt: "Le cas David Zimmerman",
       condition: "Neuf 22,90 €",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "2",
@@ -44,9 +39,7 @@ const categoriesData: CategoriesData = {
       alt: "La Librairie des Chats noirs",
       condition: "Occasion 18,32 €",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "3",
@@ -57,9 +50,7 @@ const categoriesData: CategoriesData = {
       alt: "Les Météores",
       condition: "Récit complet",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "4",
@@ -70,9 +61,7 @@ const categoriesData: CategoriesData = {
       alt: "Nous",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "5",
@@ -83,9 +72,7 @@ const categoriesData: CategoriesData = {
       alt: "Deux filles nues",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     }
 
   ],
@@ -100,9 +87,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "7",
@@ -113,9 +98,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "8",
@@ -126,9 +109,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "9",
@@ -139,9 +120,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "10",
@@ -152,9 +131,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     }
   ],
 
@@ -168,9 +145,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "12",
@@ -181,9 +156,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "13",
@@ -194,9 +167,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "14",
@@ -207,9 +178,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "15",
@@ -220,9 +189,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     }
   ],
 
@@ -236,9 +203,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "17",
@@ -249,9 +214,7 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
     {
       id: "18",
@@ -262,39 +225,15 @@ const categoriesData: CategoriesData = {
       alt: "Roman de Ronce et d'Épine",
       condition: "Neuf",
       description: "Un thriller captivant avec des twists imprévus.",
-      isLiked: false,
-      onLike: () => {},
-      onDelete: () => {},
+
     },
   ]
 }
 
-const CategoriesSection = () => {
-  const [categories, setCategories] = useState(categoriesData); // État local pour les catégories
-  const [likedBooks, setLikedBooks] = useState<string[]>([]); // Stocke les livres aimés
+const BookSection = () => {
+  const [categories] = useState(categoriesData); // Les données sont statiques, donc l'état pourrait ne pas être nécessaire
 
-  // Fonction pour gérer l'action "like"
-  const handleLike = (id: string) => {
-    setLikedBooks((prevLikedBooks) =>
-      prevLikedBooks.includes(id)
-        ? prevLikedBooks.filter((bookId) => bookId !== id) // Retire si déjà aimé
-        : [...prevLikedBooks, id] // Ajoute sinon
-    );
-  };
 
-  // Fonction pour gérer l'action "supprimer"
-  const handleDelete = (id: string) => {
-    setCategories((prevCategories) => {
-      const updatedCategories = { ...prevCategories };
-
-      // Parcourt chaque catégorie et supprime le livre correspondant
-      for (const [category, books] of Object.entries(updatedCategories)) {
-        updatedCategories[category] = books.filter((book) => book.id !== id);
-      }
-
-      return updatedCategories;
-    });
-  };
 
   return (
     <div className="w-full p-4">
@@ -306,7 +245,6 @@ const CategoriesSection = () => {
           {(books).map((book) => (
             <CategoriesCard
               key={book.id}
-              id={book.id}
               title={book.title}
               author={book.author}
               price={book.price}
@@ -314,9 +252,7 @@ const CategoriesSection = () => {
               alt={book.alt}
               condition={book.condition}
               description={book.description}
-              isLiked={likedBooks.includes(book.id)} // Vérifie si le livre est aimé
-              onLike={handleLike}
-              onDelete={handleDelete}
+
             />
           ))}
         </div>
@@ -326,5 +262,5 @@ const CategoriesSection = () => {
   );
 };
 
-export default CategoriesSection;
+export default BookSection;
 

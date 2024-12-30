@@ -1,7 +1,7 @@
 'use client'; // Indique que ce fichier est destiné au client-side
 
 // Fonction pour créer un cookie de session
-export async function createSessionCookie() {
+export async function createSessionCookie(): Promise<void> {
   try {
     const response = await fetch('/api/cookies/session', {
       method: 'POST',
