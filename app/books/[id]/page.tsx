@@ -20,140 +20,140 @@ const BookDetail = () => {
   const [loading, setLoading] = useState<boolean>(true); // État de chargement
   const [error, setError] = useState<string | null>(null); // État pour les erreurs
 
-  const booksData: Book[] = [
-    {
-      id: "1",
-      title: "Le cas David Zimmerman",
-      author: "Lucas Harari",
-      description: "Un thriller captivant.",
-      imageSrc: "/assets/bookImages/b1.jpeg",
-    },
-    {
-      id: "2",
-      title: "La Librairie des Chats noirs",
-      author: "Piergiorgio Pulixi",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/b2.jpeg",
-    },
-    {
-    
-      id: "3",
-      title: "Les Météores",
-      author: "Inconnu",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/b3.jpeg",
-    },
-    {
-      id: "4",
-      title: "Nous",
-      author: "Christelle Dabos",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/b4.jpeg",
-    },
-    {
-      id: "5",
-      title: "Deux filles nues",
-      author: "Luz",
-      description: "Une librairie mystérieuse.",      
-      imageSrc: "/assets/bookImages/b5.jpeg",
-    },
-    {
-      id: "6",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",     
-      imageSrc: "/assets/bookImages/b6.jpeg",
-    },
-    {
-      id: "7",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",     
-      imageSrc: "/assets/bookImages/b7.jpeg",
-    },
-    {
-      id: "8",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/b8.jpeg",
-    },
-    {
-      id: "9",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/b9.jpeg",
-    },
-    {
-      id: "10",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/n1.jpeg",
-    },
-    {
-      id: "11",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/n2.jpeg",
-    },
-    {
-      id: "12",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/n3.jpeg",
-    },
-    {
-      id: "13",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/n4.jpeg",
-    },
-    {
-      id: "14",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/n5.jpeg",
-
-    },
-    {
-      id: "15",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/n6.jpeg",
-
-    },
-    {
-      id: "16",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/n7.jpeg",
-
-    },
-    {
-      id: "17",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/n8.jpeg",
-    },
-    {
-      id: "18",
-      title: "Roman de Ronce et d'Épine",
-      author: "Lucie Baratte",
-      description: "Une librairie mystérieuse.",
-      imageSrc: "/assets/bookImages/n9.jpeg",
-    },
-  ];
-
   useEffect(() => {
+    const booksData: Book[] = [
+      {
+        id: "1",
+        title: "Le cas David Zimmerman",
+        author: "Lucas Harari",
+        description: "Un thriller captivant.",
+        imageSrc: "/assets/bookImages/b1.jpeg",
+      },
+      {
+        id: "2",
+        title: "La Librairie des Chats noirs",
+        author: "Piergiorgio Pulixi",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/b2.jpeg",
+      },
+      {
+      
+        id: "3",
+        title: "Les Météores",
+        author: "Inconnu",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/b3.jpeg",
+      },
+      {
+        id: "4",
+        title: "Nous",
+        author: "Christelle Dabos",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/b4.jpeg",
+      },
+      {
+        id: "5",
+        title: "Deux filles nues",
+        author: "Luz",
+        description: "Une librairie mystérieuse.",      
+        imageSrc: "/assets/bookImages/b5.jpeg",
+      },
+      {
+        id: "6",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",     
+        imageSrc: "/assets/bookImages/b6.jpeg",
+      },
+      {
+        id: "7",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",     
+        imageSrc: "/assets/bookImages/b7.jpeg",
+      },
+      {
+        id: "8",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/b8.jpeg",
+      },
+      {
+        id: "9",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/b9.jpeg",
+      },
+      {
+        id: "10",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/n1.jpeg",
+      },
+      {
+        id: "11",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/n2.jpeg",
+      },
+      {
+        id: "12",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/n3.jpeg",
+      },
+      {
+        id: "13",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/n4.jpeg",
+      },
+      {
+        id: "14",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/n5.jpeg",
+  
+      },
+      {
+        id: "15",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/n6.jpeg",
+  
+      },
+      {
+        id: "16",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/n7.jpeg",
+  
+      },
+      {
+        id: "17",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/n8.jpeg",
+      },
+      {
+        id: "18",
+        title: "Roman de Ronce et d'Épine",
+        author: "Lucie Baratte",
+        description: "Une librairie mystérieuse.",
+        imageSrc: "/assets/bookImages/n9.jpeg",
+      },
+    ];
+
     if (id) {
       // Recherche du livre en fonction de l'ID
       const foundBook = booksData.find((b) => b.id === id);

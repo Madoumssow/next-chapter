@@ -1,3 +1,5 @@
+"use client"
+
 // components/BookSection.tsx
 import { useState } from "react";
 import CategoriesCard from "./CategoriesCard";

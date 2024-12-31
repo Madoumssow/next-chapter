@@ -1,9 +1,28 @@
-'use client'; // Indique que ce fichier est destiné au client-side
+
+export const dynamic = "force-dynamic"; // Ajoutez cette ligne en haut du fichier
+
 
 // Interface pour le type de réponse API
 interface ApiResponse {
   message: string;
 }
+
+// Logger pour uniformiser les messages
+const logger = {
+  log: (message: string, ...optionalParams: unknown[]) => {
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(message, ...optionalParams);
+    }
+  },
+  warn: (message: string, ...optionalParams: unknown[]) => {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(message, ...optionalParams);
+    }
+  },
+  error: (message: string, ...optionalParams: unknown[]) => {
+    console.error(message, ...optionalParams);
+  },
+};
 
 // Fonction générique pour effectuer des requêtes API
 async function fetchApi<T>(
@@ -28,26 +47,35 @@ async function fetchApi<T>(
 
     return (await response.json()) as ApiResponse;
   } catch (error) {
-    console.error(
-      `Erreur lors de l'appel à ${endpoint} :`,
-      error instanceof Error ? error.message : error
-    );
-    throw error; // Relance l'erreur pour permettre un traitement personnalisé
+    const errorMessage =
+      error instanceof Error ? error.message : 'Erreur inconnue';
+    logger.error(`Erreur lors de l'appel à ${endpoint} : ${errorMessage}`);
+    throw new Error(errorMessage);
   }
 }
 
-// Interface pour les pages
-interface PageConfig { createSessionCookie?: () => Promise<void>; }
+// Interface pour les configurations des pages
+interface PageConfig {
+  [key: string]: (() => Promise<void>) | undefined;
+}
 
-// Exemple de fonction vérifiant les champs 
-function checkFields<T>(obj: T): void { 
-  // Vérifiez les champs ici 
-  }
+// Exemple de fonction vérifiant les champs
+function checkFields<T extends Record<string, unknown>>(obj: T): void {
+  Object.keys(obj).forEach((key) => {
+    const value = obj[key];
+    if (typeof value !== 'function') {
+      logger.warn(`Le champ "${key}" n'est pas une fonction valide.`);
+    }
+  });
+}
 
-  checkFields<PageConfig>({ createSessionCookie: async () => { 
-    // Votre implémentation ici 
-  }, });
 
+// Exemple d'utilisation de checkFields
+checkFields<PageConfig>({
+  createSessionCookie: async () => {
+    logger.log('Création du cookie de session');
+  },
+});
 
 // Fonction pour créer un cookie de session
 export async function createSessionCookie(): Promise<void> {
@@ -56,9 +84,9 @@ export async function createSessionCookie(): Promise<void> {
       cookieName: 'cookieSession',
       cookieValue: 'value123',
     });
-    console.log('Succès :', data.message);
+    logger.log('Succès :', data.message);
   } catch (error) {
-    console.error('Échec de la création du cookie de session.', error);
+    logger.error('Échec de la création du cookie de session.', error);
   }
 }
 
@@ -69,9 +97,9 @@ export async function createPersistentCookie(): Promise<void> {
       cookieName: 'CookiePersistant',
       cookieValue: 'value456',
     });
-    console.log('Succès :', data.message);
+    logger.log('Succès :', data.message);
   } catch (error) {
-    console.error('Échec de la création du cookie persistant.', error);
+    logger.error('Échec de la création du cookie persistant.', error);
   }
 }
 
@@ -79,8 +107,8 @@ export async function createPersistentCookie(): Promise<void> {
 export async function deleteCookies(): Promise<void> {
   try {
     const data = await fetchApi('/api/cookies/delete', 'DELETE');
-    console.log('Succès :', data.message);
+    logger.log('Succès :', data.message);
   } catch (error) {
-    console.error('Échec de la suppression des cookies.', error);
+    logger.error('Échec de la suppression des cookies.', error);
   }
 }

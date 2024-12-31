@@ -6,7 +6,7 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'localhost',
         port: '3000',
-        pathname: '/assets/**', // Permet de charger les images locales dans le dossier public
+        pathname: '/assets/bookImages/**', // Permet de charger les images locales dans le dossier public
       },
       {
         protocol: 'https',
